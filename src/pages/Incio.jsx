@@ -103,36 +103,38 @@ const Inicio = () => {
       </section>
       {/* Carrito---------------------------------------------------------------------------------------------- */}
       <section className=" fixed w-full h-[300px] bg-black bottom-0 flex overflow-x-auto gap-10">
-        {cart.map((item) => (
-          <div key={item.key}>
-            <div className="flex">
-              {/* Image */}
-              <div
-                style={{ backgroundImage: `url(${item.cover})` }}
-                className="aspect-[10/14.8] w-[200px] bg-cover bg-no-repeat"
-              ></div>
+        {cart
+          .map((item) => (
+            <div key={item.key}>
+              <div className="flex ">
+                {/* Image */}
+                <div
+                  style={{ backgroundImage: `url(${item.cover})` }}
+                  className="aspect-[10/14.8] w-[200px] bg-cover bg-no-repeat"
+                ></div>
 
-              <div>
-                {/* Qty */}
-                <div className=" text-white text-center mt-4">{item.qty}</div>
-                <div className="flex gap-6 max-h-10 w-24 mt-4">
-                  {/* Aumentar qty */}
-                  <Buttons name={"+"} action={plusQty} data={item.key} />
-                  {/* Disminuir qty */}
-                  <Buttons name={"-"} action={minusQty} data={item.key} />
-                </div>
-                <div className=" w-full mt-4">
-                  {/* Delete from cart */}
-                  <Buttons
-                    name={"Delete"}
-                    action={deleteItem}
-                    data={item.key}
-                  />
+                <div>
+                  {/* Qty */}
+                  <div className=" text-white text-center mt-4">{item.qty}</div>
+                  <div className="flex gap-6 max-h-10 w-24 mt-4">
+                    {/* Aumentar qty */}
+                    <Buttons name={"+"} action={plusQty} data={item.key} />
+                    {/* Disminuir qty */}
+                    <Buttons name={"-"} action={minusQty} data={item.key} />
+                  </div>
+                  <div className=" w-full mt-4">
+                    {/* Delete from cart */}
+                    <Buttons
+                      name={"Delete"}
+                      action={deleteItem}
+                      data={item.key}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+          .reverse()}
       </section>
     </main>
   );
