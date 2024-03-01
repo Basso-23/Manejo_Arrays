@@ -72,7 +72,10 @@ const Inicio = () => {
   return (
     <main className=" flex min-h-screen justify-center ">
       {/* Products---------------------------------------------------------------------------------------------- */}
-      <section key={render} className="flex justify-center gap-4 h-fit">
+      <section
+        key={render}
+        className="flex justify-center gap-4 h-fit flex-wrap"
+      >
         {products.map((item) => (
           <div key={item.key} className="mt-10">
             {/* Image */}
