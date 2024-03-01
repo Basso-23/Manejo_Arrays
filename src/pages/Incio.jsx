@@ -3,7 +3,9 @@ import { products_db } from "@/json/products_db";
 import Buttons from "@/components/Buttons";
 
 const Inicio = () => {
+  const [orginal, setOriginal] = useState(products_db);
   const [products, setProducts] = useState(products_db);
+  const [cart, setCart] = useState([]);
   const [render, setRender] = useState(true);
 
   useEffect(() => {
@@ -18,7 +20,6 @@ const Inicio = () => {
   };
 
   const addItem = (toAdd) => {
-    //Añade el objeto al JSON que recibe de "toAdd"
     setProducts((prevState) => [...prevState, toAdd]);
   };
 
