@@ -3,7 +3,7 @@ const products_db = [
     key: "Harry-Goblet",
     title: "Harry Potter and the Goblet of Fire",
     qty: 0,
-    cover: "https://i.imgur.com/dzsyK29.jpeg ",
+    cover: "https://i.imgur.com/dzsyK29.jpeg",
   },
   {
     key: "Harry-Phoenix",

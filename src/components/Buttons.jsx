@@ -6,7 +6,7 @@ const Buttons = ({ name, action, data }) => {
           action(data);
         }
       }}
-      className=" bg-sky-600 w-fit px-6 py-2 cursor-pointer mt-20 text-white"
+      className=" text-center bg-orange-500 text-white uppercase py-2 mt-2 text-sm font-medium cursor-pointer w-full"
     >
       {name}
     </div>

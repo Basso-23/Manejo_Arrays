@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { products_db } from "@/json/products_db";
 import Buttons from "@/components/Buttons";
-import Image from "next/image";
 
 const Inicio = () => {
   const [orginal, setOriginal] = useState(products_db);
@@ -90,9 +89,10 @@ const Inicio = () => {
             className={`flex justify-center items-center flex-col`}
           >
             <div
-              className={` bg-[url(https://i.imgur.com/6JWdXO6.jpeg)] aspect-[10/14.8] w-[250px]  bg-contain bg-no-repeat `}
+              style={{ backgroundImage: `url(${item.cover})` }}
+              className="aspect-[10/14.8] w-[250px] bg-cover bg-no-repeat"
             ></div>
-            {item.cover}
+            <Buttons name={"Add"} action={addItem} data={book} />
           </div>
         ))}
       </div>
