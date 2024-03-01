@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { products_db } from "@/json/products_db";
 import Buttons from "@/components/Buttons";
+import Image from "next/image";
 
 const Inicio = () => {
   const [orginal, setOriginal] = useState(products_db);
@@ -81,16 +82,21 @@ const Inicio = () => {
     <div className=" flex min-h-screen flex-col justify-center items-center">
       <div
         key={render}
-        className=" text-lg gap-10 flex flex-wrap justify-center max-w-[750px]"
+        className=" text-lg gap-10 flex flex-wrap max-w-[1750px] justify-center"
       >
         {products.map((item) => (
-          <div key={item.id} className=" border px-6 py-2 text-center">
-            {item.title} <br />
-            <strong className=" mt-4">{item.cant}</strong>
+          <div
+            key={item.key}
+            className={`flex justify-center items-center flex-col`}
+          >
+            <div
+              className={` bg-[url(https://i.imgur.com/6JWdXO6.jpeg)] aspect-[10/14.8] w-[250px]  bg-contain bg-no-repeat `}
+            ></div>
+            {item.cover}
           </div>
         ))}
       </div>
-      <div className=" flex gap-10">
+      <div className=" flex gap-10 flex-wrap">
         <Buttons name={"Add"} action={addItem} data={book} />
         <Buttons name={"Delete"} action={deleteItem} data={products.length} />
         <Buttons name={"Check"} action={checkItem} data={2} />
