@@ -11,8 +11,11 @@ const Inicio = () => {
     console.log(cart);
   }, [cart]);
 
+  //Importante: Valor unico del JSON: key
+  //JSON que esta cambiando: cart
+  //Cambiar estas dos cosas de ser necesario
   const addItem = (toAdd, id) => {
-    //Busca en "item.key" si el valor que recibe de "id" existe en el JSON
+    //Busca en "item.key" si el valor que recibe de "id" existe en el JSON del carrito
     if (cart.find((item) => item.key == id)) {
       //Aumenta la qty del producto si ya esta en el carrito
       plusQty(id);
@@ -30,7 +33,7 @@ const Inicio = () => {
   };
 
   const plusQty = (toFind) => {
-    //Busca en "item.key" si el valor que recibe de "toFind" existe en el JSON
+    //Busca en "item.key" si el valor que recibe de "toFind" existe en el JSON del carrito
     if (cart.find((item) => item.key == toFind)) {
       const updatedItems = cart;
       //Encuentra el index del valor a cambiar
@@ -48,7 +51,7 @@ const Inicio = () => {
   };
 
   const minusQty = (toFind, id) => {
-    //Busca en "item.key" si el valor que recibe de "toFind" existe en el JSON
+    //Busca en "item.key" si el valor que recibe de "toFind" existe en el JSON del carrito
     if (cart.find((item) => item.key == toFind)) {
       const updatedItems = cart;
       //Encuentra el index del valor a cambiar
