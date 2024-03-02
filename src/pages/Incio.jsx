@@ -14,9 +14,12 @@ const Inicio = () => {
   //Importante: Valor unico del JSON: key
   //JSON que esta cambiando: cart
   //Cambiar estas dos cosas de ser necesario
-  const addItem = (toAdd, id) => {
+  const addItem = (toAdd, id, modifier) => {
+    const objIndex = cart.findIndex((item) => item.key === id);
     //Busca en "item.key" si el valor que recibe de "id" existe en el JSON del carrito
-    if (cart.find((item) => item.key == id)) {
+    if (
+      cart.find((item) => item.key === id && cart[objIndex].size === modifier)
+    ) {
       //Aumenta la qty del producto si ya esta en el carrito
       plusQty(id);
     } else {
@@ -50,7 +53,7 @@ const Inicio = () => {
     }
   };
 
-  const minusQty = (toFind, id) => {
+  const minusQty = (toFind) => {
     //Busca en "item.key" si el valor que recibe de "toFind" existe en el JSON del carrito
     if (cart.find((item) => item.key == toFind)) {
       const updatedItems = cart;
@@ -86,16 +89,38 @@ const Inicio = () => {
               style={{ backgroundImage: `url(${item.cover})` }}
               className="aspect-[10/14.8] w-[300px] bg-cover bg-no-repeat mb-2"
             ></div>
+            {/* Sizes */}
+            <div className="flex gap-6 mb-2">
+              {item.available_sizes.map((data) => (
+                <div
+                  onClick={() => {
+                    item.size = data.option;
+                    setRender(!render);
+                  }}
+                  key={data.key}
+                  className={
+                    item.size === data.option
+                      ? "bg-orange-500 px-4 py-2 text-white"
+                      : " bg-gray-300 px-4 py-2 text-white"
+                  }
+                >
+                  {data.option}
+                </div>
+              ))}
+            </div>
             {/* Add to cart */}
             <Buttons
               name={"Add"}
               action={addItem}
-              id={item.key}
+              id={item.key + item.size}
+              modifier={item.size}
               data={{
-                key: item.key,
+                key: item.key + item.size,
                 title: item.title,
                 qty: item.qty,
                 cover: item.cover,
+                size: item.size,
+                available_sizes: item.available_sizes,
               }}
             />
           </div>
@@ -116,11 +141,26 @@ const Inicio = () => {
                 <div>
                   {/* Qty */}
                   <div className=" text-white text-center mt-4">{item.qty}</div>
-                  <div className="flex gap-6 max-h-10 w-24 mt-4">
+                  <div className="flex gap-6 max-h-10 w-24 mt-4 mx-auto">
                     {/* Aumentar qty */}
                     <Buttons name={"+"} action={plusQty} data={item.key} />
                     {/* Disminuir qty */}
                     <Buttons name={"-"} action={minusQty} data={item.key} />
+                  </div>
+                  {/* Sizes */}
+                  <div className="flex gap-6 my-6">
+                    {item.available_sizes.map((data) => (
+                      <div
+                        key={data.key}
+                        className={
+                          item.size === data.option
+                            ? "bg-orange-500 px-4 py-2 text-white"
+                            : " bg-gray-300 px-4 py-2 text-white"
+                        }
+                      >
+                        {data.option}
+                      </div>
+                    ))}
                   </div>
                   <div className=" w-full mt-4">
                     {/* Delete from cart */}
