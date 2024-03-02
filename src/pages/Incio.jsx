@@ -93,12 +93,15 @@ const Inicio = () => {
               style={{ backgroundImage: `url(${item.cover})` }}
               className="aspect-[10/14.8] w-[300px] bg-cover bg-no-repeat mb-2"
             ></div>
+            {/* Price */}
+            <div className="mb-2">${item.price.toFixed(2)}</div>
             {/* Sizes */}
             <div className="flex gap-6 mb-2">
               {item.available_sizes.map((data) => (
                 <div
                   onClick={() => {
                     item.size = data.option;
+                    item.price = data.price;
                     setRender(!render);
                   }}
                   key={data.key}
@@ -125,6 +128,7 @@ const Inicio = () => {
                 qty: item.qty,
                 cover: item.cover,
                 size: item.size,
+                price: item.price,
                 available_sizes: item.available_sizes,
               }}
             />
@@ -147,10 +151,10 @@ const Inicio = () => {
                   {/* Qty */}
                   <div className=" text-white text-center mt-4">{item.qty}</div>
                   <div className="flex gap-6 max-h-10 w-24 mt-4 mx-auto">
-                    {/* Aumentar qty */}
-                    <Buttons name={"+"} action={plusQty} data={item.key} />
                     {/* Disminuir qty */}
                     <Buttons name={"-"} action={minusQty} data={item.key} />
+                    {/* Aumentar qty */}
+                    <Buttons name={"+"} action={plusQty} data={item.key} />
                   </div>
                   {/* Sizes */}
                   <div className="flex gap-6 my-6">
@@ -174,6 +178,10 @@ const Inicio = () => {
                       action={deleteItem}
                       data={item.key}
                     />
+                  </div>
+                  {/* Price */}
+                  <div className="mt-4 text-white text-center">
+                    ${(item.price * item.qty).toFixed(2)}
                   </div>
                 </div>
               </div>

@@ -5,10 +5,11 @@ const products_db = [
     qty: 1,
     cover: "https://i.imgur.com/dzsyK29.jpeg",
     size: "S",
+    price: 10,
     available_sizes: [
-      { key: 1, option: "S" },
-      { key: 2, option: "M" },
-      { key: 3, option: "L" },
+      { key: 1, option: "S", price: 10 },
+      { key: 2, option: "M", price: 20 },
+      { key: 3, option: "L", price: 30 },
     ],
   },
   {
@@ -17,10 +18,11 @@ const products_db = [
     qty: 1,
     cover: "https://i.imgur.com/NSdjo7f.jpeg",
     size: "S",
+    price: 10,
     available_sizes: [
-      { key: 1, option: "S" },
-      { key: 2, option: "M" },
-      { key: 3, option: "L" },
+      { key: 1, option: "S", price: 10 },
+      { key: 2, option: "M", price: 20 },
+      { key: 3, option: "L", price: 30 },
     ],
   },
   {
@@ -29,10 +31,11 @@ const products_db = [
     qty: 1,
     cover: "https://i.imgur.com/ZNMC3XZ.jpeg",
     size: "S",
+    price: 10,
     available_sizes: [
-      { key: 1, option: "S" },
-      { key: 2, option: "M" },
-      { key: 3, option: "L" },
+      { key: 1, option: "S", price: 10 },
+      { key: 2, option: "M", price: 20 },
+      { key: 3, option: "L", price: 30 },
     ],
   },
   {
@@ -41,10 +44,12 @@ const products_db = [
     qty: 1,
     cover: "https://i.imgur.com/6JWdXO6.jpeg",
     size: "S",
+    price: 10.0,
+    price: 10,
     available_sizes: [
-      { key: 1, option: "S" },
-      { key: 2, option: "M" },
-      { key: 3, option: "L" },
+      { key: 1, option: "S", price: 10 },
+      { key: 2, option: "M", price: 20 },
+      { key: 3, option: "L", price: 30 },
     ],
   },
   {
@@ -53,10 +58,11 @@ const products_db = [
     qty: 1,
     cover: "https://i.imgur.com/BI0xSVd.jpeg",
     size: "S",
+    price: 10,
     available_sizes: [
-      { key: 1, option: "S" },
-      { key: 2, option: "M" },
-      { key: 3, option: "L" },
+      { key: 1, option: "S", price: 10 },
+      { key: 2, option: "M", price: 20 },
+      { key: 3, option: "L", price: 30 },
     ],
   },
 ];
