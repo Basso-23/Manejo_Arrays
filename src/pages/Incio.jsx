@@ -15,8 +15,12 @@ const Inicio = () => {
   //JSON que esta cambiando: cart
   //Cambiar estas dos cosas de ser necesario
   const addItem = (toAdd, id, modifier) => {
+    //Encuentra el index del valor en el carrito
     const objIndex = cart.findIndex((item) => item.key === id);
-    //Busca en "item.key" si el valor que recibe de "id" existe en el JSON del carrito
+    //1ro: Busca en "item.key" si el valor que recibe de "id" existe en el JSON del carrito
+    //2do: Busca en index del objeto si el valor, que en este caso es "size" es igual a lo que recibe de "modifier"
+    //Si ambos son "true" significa que en el carrito se encuentra el mismo producto con el mismo modifier asique aumentara la cantidad del producto
+    //Si alguno de los dos es "false" agregara un nuevo producto al carrito
     if (
       cart.find((item) => item.key === id && cart[objIndex].size === modifier)
     ) {
@@ -109,6 +113,7 @@ const Inicio = () => {
               ))}
             </div>
             {/* Add to cart */}
+            {/* item.key + item.size = cambia el valor unico del producto al valor que posee actualmente mas su modifier */}
             <Buttons
               name={"Add"}
               action={addItem}
@@ -154,8 +159,8 @@ const Inicio = () => {
                         key={data.key}
                         className={
                           item.size === data.option
-                            ? "bg-orange-500 px-4 py-2 text-white"
-                            : " bg-gray-300 px-4 py-2 text-white"
+                            ? "bg-orange-500 px-4 py-2 text-white mx-auto"
+                            : "hidden"
                         }
                       >
                         {data.option}
